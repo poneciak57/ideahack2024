@@ -14,5 +14,6 @@ until nc -z "$host" 5432; do
 done
 
 echo "$host is up - executing command"
+# sleep 3600
 python manage.py migrate
 python manage.py runserver 0.0.0.0:8000

@@ -14,6 +14,7 @@ from pathlib import Path
 import os
 
 LOGIN_URL = '/login/'
+AUTH_USER_MODEL = 'common.CustomUser'
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'FbNaukowcy',
     'auth_app',
     'django.contrib.postgres',
+    'start_page',
 ]
 
 MIDDLEWARE = [

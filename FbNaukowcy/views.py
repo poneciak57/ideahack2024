@@ -15,6 +15,7 @@ def project_list(request):
     users = Profile.objects.exclude().distinct()
     return render(request, 'FbNaukowcy/projects_list.html',
                   {'publications': projects, 'users': users})
+
 def add_publication(request):
     if request.method == 'POST':
         form = PublicationForm(request.POST,user=request.user)
@@ -24,6 +25,7 @@ def add_publication(request):
     else:
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_publication.html', {'form': form})
+
 def add_project(request):
     if request.method == 'POST':
         form = PublicationForm(request.POST,user=request.user)
@@ -33,6 +35,7 @@ def add_project(request):
     else:
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_project.html', {'form': form})
+
 def add_u(request):
     Profile.objects.create(type='sciencist',open_for_contact=True)
     return HttpResponse('ok')
