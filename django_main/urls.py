@@ -25,4 +25,5 @@ urlpatterns = [
 
     path('', include('auth_app.urls'))
 
+    path('', include('start_page.urls')),
 ]
