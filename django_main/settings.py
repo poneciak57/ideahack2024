@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'FbNaukowcy'
-
+    'FbNaukowcy',
     'auth_app',
     'django.contrib.postgres',
 ]

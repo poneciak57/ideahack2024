@@ -7,8 +7,8 @@
 </head>
 <body>
     <h1>Blog Posts</h1>
-    <a href="{% url 'add_publication' %}" class="btn btn-primary">Add New Post</a>
-    <a href="{% url 'project_list' %}" class="btn btn-primary">View projects</a>
+    <a href="{% url 'add_project' %}" class="btn btn-primary">Add New Project</a>
+    <a href="{% url 'publication_list' %}" class="btn btn-primary">View publications</a>
     <h2>All Users</h2>
     <ul>
         {% for user in users %}
