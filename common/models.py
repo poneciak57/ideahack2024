@@ -25,7 +25,7 @@ class Profile(models.Model):
         return f'{self.user.username} - {self.user.email}'
 
 class Paper(models.Model):
-    author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    #author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     brief = models.TextField()
     link = models.CharField(max_length=200)
