@@ -11,6 +11,26 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Save</button>
+        <ul id="id_choices" class="custom-checkbox" data-custom-attr="example">
+    <li>
+        <label for="id_choices_0">
+            <input type="checkbox" name="choices" value="option1" id="id_choices_0">
+            Option 1
+        </label>
+    </li>
+    <li>
+        <label for="id_choices_1">
+            <input type="checkbox" name="choices" value="option2" id="id_choices_1">
+            Option 2
+        </label>
+    </li>
+    <li>
+        <label for="id_choices_2">
+            <input type="checkbox" name="choices" value="option3" id="id_choices_2">
+            Option 3
+        </label>
+    </li>
+</ul>
     </form>
     <a href="{% url 'publication_list' %}">Back to Posts</a>
 </body>
