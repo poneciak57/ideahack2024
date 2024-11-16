@@ -10,13 +10,7 @@ class CustomUser(AbstractUser):
         return self.username
 
 class Profile(models.Model):
-    PROFILE_TYPE_CHOICES = [
-        ('scientist', 'Scientist'),
-        ('businessman', 'Businessman'),
-        ('investor', 'Investor'),
-    ]
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # Can be either 'scientist' or 'businessman' or 'investor'
     type = models.CharField(max_length=100, choices=PROFILE_TYPE_CHOICES)
     open_for_contact = models.BooleanField(default=True)
@@ -28,7 +22,9 @@ class Paper(models.Model):
     #author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     brief = models.TextField()
+
     link = models.CharField(max_length=200)
+
     publication_date = models.DateField(auto_now_add=True)
     embedding = ArrayField(models.FloatField(), blank=True, default=list)
     def __str__(self):
