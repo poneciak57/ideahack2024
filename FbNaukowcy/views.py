@@ -1,15 +1,20 @@
-from django.shortcuts import render, redirect
-from .models import Publication
+from django.shortcuts import render, redirect, HttpResponse
+from common.models import Paper, Profile
 from .forms import PublicationForm
 def publication_list(request):
-    publications = Publication.objects.all().order_by('-created_at')
-    return render(request, 'FbNaukowcy/publication_list.html', {'publications': publications})
+    publications = Paper.objects.all()
+    users = Profile.objects.exclude().distinct()#chcemy dawać tylko podobnych użytkowników
+
+    return render(request, 'FbNaukowcy/publication_list.html', {'publications': publications,'users': users})
 def add_publication(request):
-    if request.method == 'Publication':
-        form = PublicationForm(request.Pub)
+    if request.method == 'POST':
+        form = PublicationForm(request.POST,user=request.user)
         if form.is_valid():
             form.save()
             return redirect('publication_list')  # Przekierowanie na listę postów
     else:
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_publication.html', {'form': form})
+def add_u(request):
+    Profile.objects.create(type='sciencist',open_for_contact=True)
+    return HttpResponse('ok')

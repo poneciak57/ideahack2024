@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Publications</title>
+    <title>Blog Posts</title>
 </head>
 <body>
-    <h1>Blog Publications</h1>
+    <h1>Blog Posts</h1>
+    <a href="{% url 'add_publication' %}" class="btn btn-primary">Add New Post</a>
+
+    <h2>All Users</h2>
     <ul>
-        {% for publication in publications %}
+        {% for user in users %}
+            <li>{{ user.type }}</li>
+        {% empty %}
+            <li>No users available.</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Posts</h2>
+    <ul>
+        {% for post in publications %}
             <li>
-                <h2>{{ publication.title }}</h2>
-                <p>{{ publication.brief|truncatewords:30 }}</p>
-                <small>Posted on {{ publication.created_at }}</small>
+                <h3>{{ post.title }}</h3>
+                <p>{{ post.content|truncatewords:30 }}</p>
+                <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
             </li>
         {% empty %}
-            <li>No publications available.</li>
+            <li>No posts available.</li>
         {% endfor %}
     </ul>
 </body>
