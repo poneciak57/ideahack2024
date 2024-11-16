@@ -5,7 +5,6 @@ def publication_list(request):
     publications = Paper.objects.all()
 
     users = Profile.objects.exclude().distinct()#chcemy dawać tylko podobnych użytkowników
-    for user in users:
 
 
     return render(request, 'FbNaukowcy/publication_list.html',
