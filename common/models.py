@@ -1,8 +1,16 @@
 from django.db import models
 from django.contrib.postgres.fields import ArrayField
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
+
+class CustomUser(AbstractUser):
+    links = ArrayField(models.CharField(max_length=200), blank=True, default=list)
+
+    def __str__(self):
+        return self.username
 
 class Profile(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     # Can be either 'scientist' or 'businessman' or 'investor'
     type = models.CharField(max_length=100)
     open_for_contact = models.BooleanField(default=True)
