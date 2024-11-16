@@ -1,5 +1,15 @@
 # Usage
 
+## Applikacja info
+
+### Użytkownicy
+Hasła takie same jak loginy
+- biznes_user
+- invest_user
+- nauka_user
+
+
+
 ## Run
 ```
 docker-compose up --build -d
@@ -10,8 +20,8 @@ it runs in dev mode
 ## Containers Management
 * Django container
     ```bash
-    docker exec -it hackaton-prep-web-1 bash
-    docker exec -it hackaton-prep-web-1 python manage.py shell
+    docker exec -it ideahack2024-web-1 bash
+    docker exec -it ideahack2024-web-1 python manage.py shell
     ```
     * Inside of Django bash
         ```bash
@@ -34,8 +44,8 @@ it runs in dev mode
             ```
 * PostgreSQL container
     ```bash
-    docker exec -it hackaton-prep-db-1 bash
-    docker exec -it hackaton-prep-db-1 psql -U myuser -d mydatabase
+    docker exec -it ideahack2024-db-1 bash
+    docker exec -it ideahack2024-db-1 psql -U myuser -d mydatabase
     ```
     * Inside of PostgreSQL bash:
         ```
