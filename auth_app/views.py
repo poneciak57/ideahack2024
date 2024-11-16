@@ -12,7 +12,7 @@ def login_view(request):
             login(request, user)
             return redirect('secured')  # Redirect to a secured page
         else:
-            return render(request, 'auth_app/login.html', {'error': 'Invalid credentials'})
+            return render(request, 'auth_app/login.html', {'error': 'Nieprawidłowy login lub hasło'})
     return render(request, 'auth_app/login.html')
 
 # Logout view
