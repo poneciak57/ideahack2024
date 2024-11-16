@@ -1,0 +1,33 @@
+# DO NOT CHANGE ANYTHING
+version: '3'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: mydatabase
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+  web:
+    build:
+      context: ./
+    command: sh -c /app/run_somehow.sh
+    volumes:
+      - ./:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      DJANGO_DB_NAME: mydatabase
+      DJANGO_DB_USER: myuser
+      DJANGO_DB_PASSWORD: mypassword
+      DJANGO_DB_HOST: db
+
+volumes:
+  postgres_data:
