@@ -3,3 +3,5 @@
 *.pyo
 
 Session.vim
+.directory
+.idea
