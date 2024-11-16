@@ -1,5 +1,15 @@
 # Usage
 
+## Applikacja info
+
+### Użytkownicy
+Hasła takie same jak loginy
+- biznes_user
+- invest_user
+- nauka_user
+
+
+
 ## Run
 ```
 docker-compose up --build -d

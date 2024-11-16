@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Secured Page</title>
+</head>
+<body>
+    <h1>Welcome, {{ user.username }}!</h1>
+    <p>This is a secured page.</p>
+    <a href="{% url 'logout' %}">Logout</a>
+</body>
+</html>
