@@ -23,7 +23,7 @@ urlpatterns = [
 
     path('FbNaukowcy/', include('FbNaukowcy.urls')),
 
-    path('', include('auth_app.urls'))
+    path('', include('auth_app.urls')),
 
     path('', include('start_page.urls')),
 ]

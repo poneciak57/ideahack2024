@@ -41,12 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
-    'FbNaukowcy'
-
+    'FbNaukowcy',
     'auth_app',
     'django.contrib.postgres',
-    'start_page'
+    'start_page',
 ]
 
 MIDDLEWARE = [
