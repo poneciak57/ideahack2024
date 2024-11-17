@@ -1,6 +1,6 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import get_object_or_404, render, redirect, HttpResponse
 from common.models import CustomUser, Paper, Profile, Project
-from .forms import PublicationForm, ProjectForm
+from .forms import FinanceRoundForm, PublicationForm, ProjectForm
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -37,3 +37,19 @@ def add_project(request):
     else:
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_project.html', {'form': form})
+
+@login_required
+def rounds(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    if request.method == 'POST':
+        form = FinanceRoundForm(request.POST)
+        if form.is_valid():
+            finance_round = form.save(commit=False)
+            finance_round.project = project
+            finance_round.save()
+            # TODO change to project details with project id in redirect
+            # TODO also add funding rounds to project details view
+            return redirect('project_list')
+    else:
+        form = FinanceRoundForm()
+    return render(request, 'FbNaukowcy/add_round.html', {'form': form, 'project': project})

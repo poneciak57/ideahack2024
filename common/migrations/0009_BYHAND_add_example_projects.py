@@ -77,7 +77,7 @@ def remove_example_projects(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('common', '0007_BYHAND_add_example_papers'),
+        ('common', '0008_finance_rounds'),
     ]
 
     operations = [
