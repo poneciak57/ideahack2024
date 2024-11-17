@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paper {{ paper.title }}</title>
+</head>
+<body>
+    <h3>{{ paper.title }}</h3>
+    <p>{{ paper.brief }}</p>
+    Posted by {{ paper.author.username }} on {{ paper.publication_date }}
+    </br>
+    {{ paper.is_public }}
+    </br>
+    {{ paper.link }}
+</body>
+</html>

@@ -124,23 +124,31 @@
             <!-- TODO provide publications from the database -->
             <h2>Papers list</h2>
             <ul>
-                {% for post in publications_of_other_users %}
-                    <li class="tile">
-                        <h3>{{ post.title }}</h3>
-                        <p>{{ post.brief|truncatewords:20 }}</p>
-                        <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
-                    </li>
+                {% for publication in publications_of_other_users %}
+                <li class="tile">
+                    <a href="{% url 'FbNaukowcy:publication_details' publication.id %}">
+                        <div>
+                            <h3>{{ publication.title }}</h3>
+                            <p>{{ publication.brief|truncatewords:20 }}</p>
+                            <small>Posted by {{ publication.user.username }} on {{ publication.created_at }}</small>
+                        </div>
+                    </a>
+                </li>
                 {% empty %}
-                    <li>No posts available.</li>
+                <li>No posts available.</li>
                 {% endfor %}
             </ul>
             <h2>Twoje otwarte projekty naukowe</h2>
             <ul>
-                    {% for post in publications_of_logged_user %}
+                    {% for publication in publications_of_logged_user %}
                         <li class="tile">
-                            <h3>{{ post.title }}</h3>
-                            <p>{{ post.brief|truncatewords:20 }}</p>
-                            <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                            <a href="{% url 'FbNaukowcy:publication_details' publication.id %}">
+                                <div>
+                                        <h3>{{ publication.title }}</h3>
+                                        <p>{{ publication.brief|truncatewords:20 }}</p>
+                                        <small>Posted by {{ publication.user.username }} on {{ publication.created_at }}</small>
+                                </div>
+                            </a>
                         </li>
                     {% empty %}
                         <li>No posts available.</li>

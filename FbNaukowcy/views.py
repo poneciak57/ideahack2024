@@ -39,6 +39,11 @@ def project_details(request, project_id):
     rounds = FinanceRound.objects.filter(project=project)
     return render(request, 'FbNaukowcy/project_details.html', {'project': project, 'rounds': rounds})
 
+def publication_details(request, publication_id):
+    paper = get_object_or_404(Paper, pk=publication_id)
+    return render(request, 'FbNaukowcy/publication_details.html', {'paper': paper})
+
+
 def add_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST,user=request.user)
