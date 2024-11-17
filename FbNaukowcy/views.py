@@ -7,8 +7,9 @@ from django.contrib.auth.decorators import login_required
 def publication_list(request):
     publications = Paper.objects.all()
     users = CustomUser.objects.all()
+    logged_user = request.user
     return render(request, 'FbNaukowcy/publication_list.html',
-                  {'publications': publications, 'users': users})
+                  {'publications': publications, 'users': users, 'logged_user': logged_user})
 
 def project_list(request):
     projects = Project.objects.all()
@@ -36,7 +37,3 @@ def add_project(request):
     else:
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_project.html', {'form': form})
-
-def add_u(request):
-    Profile.objects.create(type='sciencist',open_for_contact=True)
-    return HttpResponse('ok')

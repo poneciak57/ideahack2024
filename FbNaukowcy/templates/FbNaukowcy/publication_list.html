@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Posts</title>
+    <title>Blog Papers</title>
 </head>
 <body>
-    <h1>Blog Posts</h1>
+    <h1>Blog Papers</h1>
     <a href="{% url 'add_publication' %}" class="btn btn-primary">Post New Paper</a>
 
     <a href="{% url 'project_list' %}" class="btn btn-primary">View projects</a>
 
+    <h2>Currently logged in user</h2>
+    <ul>{{ logged_user.first_name }} {{logged_user.last_name}} ({{ logged_user.username }})</ul>
     <h2>All Users</h2>
     <ul>
         <!-- <li> {{ user.username }} </li> -->
@@ -22,7 +24,7 @@
         {% endfor %}
     </ul>
 
-    <h2>Posts</h2>
+    <h2>Papers</h2>
     <ul>
         {% for post in publications %}
             <li>
