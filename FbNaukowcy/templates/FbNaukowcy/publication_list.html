@@ -7,14 +7,16 @@
 </head>
 <body>
     <h1>Blog Posts</h1>
-    <a href="{% url 'add_publication' %}" class="btn btn-primary">Add New Post</a>
+    <a href="{% url 'add_publication' %}" class="btn btn-primary">Post New Paper</a>
 
     <a href="{% url 'project_list' %}" class="btn btn-primary">View projects</a>
 
     <h2>All Users</h2>
     <ul>
+        <!-- <li> {{ user.username }} </li> -->
         {% for user in users %}
-            <li>{{ user.type }}</li>
+            <li>{{ user.first_name }} {{ user.last_name }} ({{ user.username }})</li>
+            <!-- <li> {{ user.username }} </li> -->
         {% empty %}
             <li>No users available.</li>
         {% endfor %}
@@ -25,7 +27,7 @@
         {% for post in publications %}
             <li>
                 <h3>{{ post.title }}</h3>
-                <p>{{ post.content|truncatewords:30 }}</p>
+                <p>{{ post.brief|truncatewords:30 }}</p>
                 <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
             </li>
         {% empty %}
