@@ -19,6 +19,9 @@ class FinanceRoundForm(forms.ModelForm):
     class Meta:
         model = FinanceRound
         fields = ['title', 'brief', 'fundings_gathered', 'end_date']
+        labels = {
+            "brief": ""
+        }
         widgets = {
             'end_date': forms.DateInput(attrs={'type': 'date'}),
         }

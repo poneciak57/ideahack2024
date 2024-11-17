@@ -124,8 +124,8 @@
             {% for round in rounds %}
             <li class="project-item">
                 <h3>{{ round.title }}</h3>
-                <p><span class="Kwota">Brief:</span> {{ round.fundings_gathered }}</p>
-                <p><span class="Opis">Publiczność:</span> {{ round.brief|truncatewords:20 }}</p>
+                <p><span class="Kwota">Kwota:</span> {{ round.fundings_gathered }}</p>
+                <p><span class="Opis">Brief:</span> {{ round.brief|truncatewords:20 }}</p>
             </li>
             {% empty %}
             <li class="project-item">Czekamy na pierwszą rundę finansowania!</li>
