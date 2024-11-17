@@ -1,26 +1,30 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>żAIrt</title>
+    <title>trAIcon</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #F6F6F6;
             height: 100vh;
         }
+
         #title a {
             text-decoration: none;
             color: #274C77;
         }
+
         header {
             padding-top: 20px;
             margin-left: auto;
@@ -30,58 +34,77 @@
             justify-content: space-between;
             align-items: center;
         }
+
         main {
             text-align: center;
             margin-top: 10vh;
             position: relative;
         }
+
         nav a {
-            margin-left: 60px;
+            margin-left: 25px;
             text-decoration: none;
             color: #2A3B5C;
             font-size: 14px;
         }
+
         .btn {
             padding: 12px 30px;
             border: 1px solid #274C77;
-            transition: all 0.3s ease;
+            transition: all 0.4s ease;
         }
 
         .btn-login {
-            background: white;
+            background: #F6F6F6;
             color: #274C77;
         }
 
         .btn-register {
             background: #274C77;
-            color: white;
+            color: #F6F6F6;
         }
 
         .btn-register:hover {
-            background: white;
+            background: #F6F6F6;
             color: #274C77;
         }
+
         .btn-login:hover {
             background: #274C77;
-            color: white;
+            color: #F6F6F6;
+        }
+
+        .pub_a {
+            transition: all 0.4s ease;
+        }
+
+        .pub_a:hover {
+            text-decoration: underline;
+        }
+
+        .img_bg {
+            height: 70vh;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <div id="title"><h1><a href="/">żAIrt</a></h1></div>
+        <div id="title">
+            <h1><a href="/">trAIcon</a></h1>
+        </div>
         <nav>
             {% if user.is_authenticated %}
-                {% if is_businessman %}
-                    <a href="{% url 'BuissnessSearch:project_list' %}">Dla Biznesmanów</a>
-                {% endif %}
-                {% if is_scientist %}
-                    <a href="{% url 'FbNaukowcy:publication_list' %}">Dlal Naukowców</a>
-                {% endif %}
-                <a href="{% url 'logout' %}" class="btn btn-login">Wyloguj się</a>
+            {% if is_businessman %}
+            <a href="{% url 'BuissnessSearch:project_list' %}">Dla Biznesmanów</a>
+            {% endif %}
+            {% if is_scientist %}
+            <a href="{% url 'FbNaukowcy:publication_list' %}">Dlal Naukowców</a>
+            {% endif %}
+            <a href="{% url 'logout' %}" class="btn btn-login">Wyloguj się</a>
             {% else %}
-                <a href="{% url 'login' %}" class="btn btn-login">Zaloguj się</a>
-                <a href="{% url 'register' %}" class="btn btn-register">Zarejestruj się</a>
+            <a href="{% url 'login' %}" class="btn btn-login">Zaloguj się</a>
+            <a href="{% url 'register' %}" class="btn btn-register">Zarejestruj się</a>
             {% endif %}
             <!-- <a href="{% url 'FbNaukowcy:publication_list' %}">Publikacje naukowe</a>
             <a href="login" class="btn btn-login">Zaloguj się</a>
@@ -89,7 +112,8 @@
         </nav>
     </header>
     <main>
-        <img src="{% static 'images/xd.png' %}" alt="xd">
+        <img src="{% static 'images/xd.png' %}" alt="xd" class="img_bg">
     </main>
 </body>
+
 </html>
