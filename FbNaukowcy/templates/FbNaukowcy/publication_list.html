@@ -182,11 +182,7 @@
             {% if is_scientist %}
             <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">Zobacz projekty</a>
             <a id="add_publication" class="btn" href="{% url 'FbNaukowcy:add_publication' %}">Stwórz pracę naukową</a>
-            <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">Projekty biznesowe</a>
-            <a id="add_publication" class="btn" href="{% url 'FbNaukowcy:add_publication' %}">Stwórz pracę naukową</a>
             {% else %}
-            <a href="{% url 'BuissnessSearch:project_list' %}" class="btn btn-primary">Zobacz projekty</a>
-            <a href="{% url 'BuissnessSearch:project_list' %}" class="btn btn-primary">Projekty biznesowe</a>
             {% endif %}
         </nav>
         <main>
