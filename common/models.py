@@ -25,7 +25,9 @@ class Profile(models.Model):
         return f'{self.user.username} - {self.user.email}'
 
 class Paper(models.Model):
-    #author = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    def get_default_author():
+        return Profile.objects.get(user__username='biznes_user').id
+    author = models.ForeignKey(Profile, on_delete=models.CASCADE, default=get_default_author)
     title = models.CharField(max_length=100)
     brief = models.TextField()
     link = models.CharField(max_length=200)
