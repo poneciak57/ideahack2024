@@ -1,10 +1,12 @@
 # views.py
 from django.shortcuts import render,get_object_or_404, redirect, reverse
 import random
-from .chat_utils import idea_to_vec, fill_gaps_from_info
+from .chat_utils import idea_to_vec, fill_gaps_from_info, Respond
 from .forms import SimpleForm, ProjectForm, FinanceRoundForm
 from common.models import Project, Profile, CustomUser, FinanceRound, Invitation, Paper
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse, HttpResponse
+import openai
 def add_project(request):
     print("XSDSD")
     if request.method == 'POST':
@@ -47,7 +49,7 @@ def add_project(request):
             new_project=Project(author = user, title=title,required_money=random.randint(5,100)*100000,brief=brief,type=type)
             new_project.save()
             id=new_project.pk
-            return redirect('/buisness/project/'+str(id)+'/')
+            return redirect(f'/buisness/chat_view/{id}')
     else:
         form = SimpleForm()
 
@@ -107,3 +109,30 @@ def create_invitation(request, id):
             message=request.POST['message'])
         invitation.save()
     return render(request, 'BuissnessSearch/create_invitation.html', {})
+
+
+
+from django.views.decorators.csrf import csrf_exempt
+CHAT_HISTORY = []
+@csrf_exempt
+def chat_view(request,id):
+    global CHAT_HISTORY
+    if (len(CHAT_HISTORY) >= 3):
+        CHAT_HISTORY = []
+        return redirect(f'/buisness/project/{id}')
+
+    project = get_object_or_404(Project, pk=id)
+    if(CHAT_HISTORY==[]):
+        bot_response = Respond(project.brief, "Zadaj mi pytanie o fundusze. W TEJ WIADOMOŚCI NIE PISZ DODAŁEM DO FORMULARZA")
+        CHAT_HISTORY.append({'sender': 'bot', 'message': bot_response})
+    if request.method == 'POST':
+        user_message = request.POST.get('message')
+        if user_message:
+            # Add user message to chat history
+            CHAT_HISTORY.append({'sender': 'user', 'message': user_message})
+
+            # Simple echo response
+            bot_response = Respond(project.brief, user_message)
+            CHAT_HISTORY.append({'sender': 'bot', 'message': bot_response})
+
+    return render(request, 'BuissnessSearch/chat_view.html', {'chat_history': CHAT_HISTORY})

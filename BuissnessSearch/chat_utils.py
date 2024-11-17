@@ -51,3 +51,18 @@ def fill_gaps_from_info(pomysl):
     )
     ans=chat_completion.choices[0].message.content
     return ans
+def Respond(Project_description,answer):
+    chat_completion = client.chat.completions.create(
+        messages=[{
+            "role":'system',
+            'content':f'''Zadawaj losowe standardowe pytanie do opisu projektu: {Project_description}.Odnieś się lekko do wiadomości użytkownika. Na początku mów: "Dodałem do formularza."'''
+        },
+            {
+                "role": "user",
+                "content": answer,
+            }
+        ],
+        model="gpt-4o",
+    )
+    ans=chat_completion.choices[0].message.content
+    return ans
