@@ -4,20 +4,28 @@
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: #E7ECEF;
+            background-color: #F6F6F6;
             height: 100vh;
         }
         #title {
+            padding-left: 2%;
+            padding-top: 20px;
+        }
+        #title a {
+            text-decoration: none;
             color: #274C77;
-            margin-left: 60px;
-            margin-top: 40px;
         }
         #content {
             margin: 0;
             display: flex;
-            margin-top: 15%;
+            margin-top: 10%;
             align-items: center;
             justify-content: center;
             width: 100%;
@@ -49,9 +57,12 @@
             border: none;
             cursor: pointer;
             box-sizing: border-box;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
         }
         .form-group button:hover {
-            background-color: #6096BA;
+            background: white;
+            color: #274C77;
         }
         .form-group p {
             margin-top: 10px;
@@ -66,10 +77,10 @@
     </style>
 </head>
 <body>
-    <div id="title"><h1>żAIrt</h1></div>
+    <div id="title"><h1><a href="/">żAIrt</a></h1></div>
     <div id="content">
         <form method="post">
-        <h2>Logowanie</h2>
+        <header><h2>Logowanie</h2></header>
             {% csrf_token %}
             <div class="form-group">
                 <label for="username">Email lub nazwa użytkownika:</label>
@@ -86,7 +97,7 @@
                 <button type="submit">Zaloguj się</button>
             </div>
             <div class="form-group">
-                <p>Nie masz jeszcze konta? <a href="">Zarejestruj się!</a></p>
+                <p>Nie masz jeszcze konta? <a href="#">Zarejestruj się!</a></p>
             </div>
         </form>
     </div>

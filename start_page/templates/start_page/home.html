@@ -1,13 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>żAIrt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F6F6F6;
+            height: 100vh;
+        }
+        #title a {
+            text-decoration: none;
+            color: #274C77;
+        }
+        header {
+            padding-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 96%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        main {
+            text-align: center;
+            margin-top: 40vh;
+            position: relative;
+        }
+        nav a {
+            margin-left: 60px;
+            text-decoration: none;
+            color: #2A3B5C;
+            font-size: 14px;
+        }
+        .btn {
+            padding: 12px 30px;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
+        }
+
+        .btn-login {
+            background: white;
+            color: #274C77;
+        }
+
+        .btn-register {
+            background: #274C77;
+            color: white;
+        }
+
+        .btn-register:hover {
+            background: white;
+            color: #274C77;
+        }
+        .btn-login:hover {
+            background: #274C77;
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <h1 class="display-2">ŻAIRT - Start Page</h1>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <header>
+        <div id="title"><h1><a href="/">żAIrt</a></h1></div>
+        <nav>
+            <a href="#">Publikacje naukowe</a>
+            <a href="login" class="btn btn-login">Zaloguj się</a>
+            <a href="#" class="btn btn-register">Zarejestruj się</a>
+        </nav>
+    </header>
+    <main>
+        <h1>Połącz ludzi z całego świata, aby tworzyć innowacyjne projekty</h1>
+    </main>
 </body>
 </html>
