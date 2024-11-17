@@ -1,17 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paper {{ paper.title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F6F6F6;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #title {
+            padding-left: 2%;
+            padding-top: 20px;
+        }
+        #title a {
+            text-decoration: none;
+            color: #274C77;
+        }
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 40px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h2 {
+            color: #274C77;
+            margin-bottom: 20px;
+        }
+        .btn-back {
+            margin-top: 20px;
+            background: #274C77;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #274C77;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .btn-back:hover {
+            background: white;
+            color: #274C77;
+        }
+    </style>
 </head>
 <body>
-    <h3>{{ paper.title }}</h3>
-    <p>{{ paper.brief }}</p>
-    Posted by {{ paper.author.username }} on {{ paper.publication_date }}
-    </br>
-    {{ paper.is_public }}
-    </br>
-    {{ paper.link }}
+    <title>Paper {{ paper.title }}</title>
+    <div id="content">
+        <h2>{{ paper.title }}</h2>
+        <p>{{ paper.brief }}</p>
+        Posted by {{ paper.author.username }} on {{ paper.publication_date }}
+        <br>
+        {{ paper.is_public }}
+        <br>
+        <a href="{{ paper.link }}">{{ paper.link }}</a>
+        <a href="{% url 'FbNaukowcy:publication_list' %}" class="btn-back">Powrót</a>
+    </div>
 </body>
 </html>
