@@ -24,7 +24,7 @@
             <li>
                 <h3>{{ post.title }}</h3>
                 <p>{{ post.content|truncatewords:30 }}</p>
-                <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                <small>Posted by {{ post.author.username }} on {{ post.created_at }}</small>
             </li>
         {% empty %}
             <li>No posts available.</li>
