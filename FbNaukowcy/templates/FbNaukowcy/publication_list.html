@@ -3,32 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Posts</title>
+    <title>Publication List</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F6F6F6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            padding-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 96%;
+        }
+        header a {
+            text-decoration: none;
+            color: #274C77;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        nav {
+            width: 200px;
+            padding: 20px;
+        }
+        nav a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        h2 {
+            color: #274C77;
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
+            background: #274C77;
+            color: white;
+        }
+        .btn:hover {
+            background: white;
+            color: #274C77;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .tile {
+            display: inline-block;
+            width: 20%;
+            height: 200px;
+            padding: 20px;
+            border: 1px solid #274C77;
+            background: #F6F6F6;
+            color: #274C77;
+            vertical-align: top;
+            transition: all 0.3s ease;
+            margin-right: 50px;
+            margin-bottom: 50px;
+        }
+        main h2{
+            padding-bottom: 30px;
+        }
+        .arrow-link {
+            position: relative;
+            color: #274C77;
+            text-decoration: none;
+        }
+        .tile:hover .arrow-link {
+            color: white;
+        }
+        
+    </style>
 </head>
 <body>
-    <h1>Blog Posts</h1>
-    <a href="{% url 'add_publication' %}" class="btn btn-primary">Add New Post</a>
-
-    <h2>All Users</h2>
-    <ul>
-        {% for user in users %}
-            <li>{{ user.type }}</li>
-        {% empty %}
-            <li>No users available.</li>
-        {% endfor %}
-    </ul>
-
-    <h2>Posts</h2>
-    <ul>
-        {% for post in publications %}
-            <li>
-                <h3>{{ post.title }}</h3>
-                <p>{{ post.content|truncatewords:30 }}</p>
-                <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
-            </li>
-        {% empty %}
-            <li>No posts available.</li>
-        {% endfor %}
-    </ul>
+    <header>
+        <div id="title"><h1><a href="/">żAIrt</a></h1></div>
+    </header>
+    <div class="container">
+        <nav>
+            <a href="{% url 'add_publication' %}" class="btn">Add New Post</a>
+        </nav>
+        <main>
+            <h2>Posts Kurwa</h2>
+            <ul>
+                {% for post in publications %}
+                    <li class="tile">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.brief|truncatewords:20 }}</p>
+                        <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                    </li>
+                {% empty %}
+                    <li>No posts available.</li>
+                {% endfor %}
+            </ul>
+            <h2>Twoje otwarte projekty naukowe</h2>
+            <ul>
+                    <li class="tile">
+                        <h3>Lorem, ipsum.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
+                        <small>Autorzy</small>
+                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+                    <li class="tile">
+                        <h3>Lorem, ipsum.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
+                        <small>Autorzy</small>
+                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+                    <li class="tile">
+                        <h3>Lorem, ipsum.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
+                        <small>Autorzy</small>
+                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+                    <li class="tile">
+                        <h3>Lorem, ipsum.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
+                        <small>Autorzy</small>
+                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+            </ul>
+            <h2>Badania podobne do twoich</h2>
+            <ul>
+                    <li class="tile">
+                        <h3>Lorem, ipsum.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
+                        <small>Autorzy</small>
+                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+                    <li class="tile">
+                        <h3>Lorem, ipsum.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
+                        <small>Autorzy</small>
+                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+                    <li class="tile">
+                        <h3>Lorem, ipsum.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
+                        <small>Autorzy</small>
+                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+                    <li class="tile">
+                        <h3>Lorem, ipsum.</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
+                        <small>Autorzy</small>
+                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
+                    </li>
+            </ul>
+        </main>
+    </div>
 </body>
 </html>
