@@ -1,5 +1,13 @@
 from django import forms
-from common.models import Paper, Project
+from common.models import Invitation, Paper, Project, FinanceRound
+
+class FinanceRoundForm(forms.ModelForm):
+    class Meta:
+        model = FinanceRound
+        fields = ['title', 'brief', 'fundings_gathered', 'end_date']
+        widgets = {
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
+        }
 
 class PublicationForm(forms.ModelForm):
     class Meta:

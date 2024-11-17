@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Posts</title>
+</head>
+<body>
+
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.content }}</p>
+    Posted by {{ project.author.username }} on {{ project.created_at }}
+    {{ project.is_public }}
+    {{ project.brief }}
+    {{ project.type }}
+    {{ project.project_scope }}
+    <ul>
+        {% for profile in project.profiles.all %}
+            <li>{{ profile.user.username }}</li>
+        {% empty %}
+            <li>No users available.</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for round in rounds %}
+            <li>
+                {{ round.tittle }}
+                {{ round.brief }}
+                {{ round.funding_gathered }}
+                {{ round.start_date }}
+                {{ round.end_date }} 
+            </li>
+        {% empty %}
+            <li>No finance rounds available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
