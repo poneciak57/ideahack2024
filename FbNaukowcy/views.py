@@ -1,23 +1,22 @@
 from django.shortcuts import render, redirect, HttpResponse
-from common.models import Paper, Profile, Project
+from common.models import CustomUser, Paper, Profile, Project
 from .forms import PublicationForm, ProjectForm
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def publication_list(request):
     publications = Paper.objects.all()
-
-    users = Profile.objects.exclude().distinct()#chcemy dawać tylko podobnych użytkowników
-
-
-
+    users = CustomUser.objects.all()
     return render(request, 'FbNaukowcy/publication_list.html',
                   {'publications': publications, 'users': users})
+
 def project_list(request):
     projects = Project.objects.all()
-    users = Profile.objects.exclude().distinct()
+    users = Profile.objects.all()
     return render(request, 'FbNaukowcy/projects_list.html',
                   {'publications': projects, 'users': users})
 
+@login_required
 def add_publication(request):
     if request.method == 'POST':
         form = PublicationForm(request.POST,user=request.user)
