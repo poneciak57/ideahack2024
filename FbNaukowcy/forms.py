@@ -1,5 +1,5 @@
 from django import forms
-from common.models import Paper, Project, FinanceRound
+from common.models import Invitation, Paper, Project, FinanceRound
 
 class FinanceRoundForm(forms.ModelForm):
     class Meta:

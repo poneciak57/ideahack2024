@@ -134,6 +134,18 @@
                     <li>No posts available.</li>
                 {% endfor %}
             </ul>
+            <h2>Zaproszenia</h2>
+            <ul>
+                {% for invitation in invitations %}
+                    <li class="tile">
+                        <h3>{{ invitation.project.title }}</h3>
+                        <p>{{ invitation.brief|truncatewords:20 }}</p>
+                        <small>Jesteś zaproszony przez {{ invitation.sender.user.username }} by dołączyć do projektu o nazwie {{ invitation.project.title }}.</small>
+                    </li>
+                {% empty %}
+                    <li>Brak oczekujących zaproszeń.</li>
+                {% endfor %}
+            </ul>
         </main>
     </div>
 </body>
