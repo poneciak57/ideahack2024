@@ -11,6 +11,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
@@ -32,7 +33,6 @@
         #content {
             margin: 0;
             display: flex;
-            margin-top: 10%;
             align-items: center;
             justify-content: center;
             width: 100%;
@@ -93,6 +93,7 @@
         .form-group p a {
             color: #6096BA;
             text-decoration: none;
+            margin-top: 5px;
         }
 
         .form-group p a:hover {
@@ -107,11 +108,11 @@
     </div>
     <div id="content">
         <form method="post" class="form-group">
-            <h2>Post new Paper</h2>
+            <h2>Stwórz nową pracę projektową</h2>
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary">Save</button>
-            <a href="{% url 'FbNaukowcy:publication_list' %}">Back to Posts</a>
+            <button type="submit" class="btn btn-primary">Zapisz</button>
+            <a href="{% url 'FbNaukowcy:publication_list' %}">Wróć do projektu</a>
         </form>
     </div>
 </body>
