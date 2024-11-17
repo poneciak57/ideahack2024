@@ -51,8 +51,9 @@ class Project(models.Model):
     type = models.CharField(max_length=20, choices=PROJECT_TYPE_CHOICES)
     brief = models.TextField()
     project_scope = models.TextField()
-    profiles = models.ManyToManyField(Profile, related_name='projects')
+    profiles = models.ManyToManyField(Profile, related_name='projects',blank=True)
     embedding = ArrayField(models.FloatField(), blank=True, default=list)
+
 
     def __str__(self):
         return f'{self.title}'
