@@ -3,35 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add New Paper</title>
+    <title>Add New Project</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F6F6F6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            padding-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 96%;
+        }
+        header a {
+            text-decoration: none;
+            color: #274C77;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        nav {
+            width: 15%;
+            padding: 20px;
+        }
+        nav a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        h2 {
+            color: #274C77;
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
+            background: #274C77;
+            color: white;
+        }
+        .btn:hover {
+            background: white;
+            color: #274C77;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .tile {
+            display: inline-block;
+            width: 20%;
+            height: 200px;
+            padding: 20px;
+            border: 1px solid #274C77;
+            background: #F6F6F6;
+            color: #274C77;
+            vertical-align: top;
+            transition: all 0.3s ease;
+            margin-right: 50px;
+            margin-bottom: 50px;
+        }
+        main h2{
+            padding-bottom: 30px;
+        }
+        .arrow-link {
+            position: relative;
+            color: #274C77;
+            text-decoration: none;
+        }
+        .tile:hover .arrow-link {
+            color: white;
+        }
+        #add_publication {
+            position: fixed;
+            display: block;
+            background: #274C77;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            bottom: 20px;
+            left: 20px;
+            text-align: center;
+            border: 1px solid #274C77;
+        }
+        #add_publication:hover {
+            background: white;
+            color: #274C77;
+        }        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #F6F6F6;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            padding-top: 20px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 96%;
+        }
+        header a {
+            text-decoration: none;
+            color: #274C77;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+        }
+        nav {
+            width: 15%;
+            padding: 20px;
+        }
+        nav a {
+            display: block;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        main {
+            flex: 1;
+            padding: 20px;
+        }
+        h2 {
+            color: #274C77;
+            margin-bottom: 20px;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
+            background: #274C77;
+            color: white;
+        }
+        .btn:hover {
+            background: white;
+            color: #274C77;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .tile {
+            display: inline-block;
+            width: 20%;
+            height: 200px;
+            padding: 20px;
+            border: 1px solid #274C77;
+            background: #F6F6F6;
+            color: #274C77;
+            vertical-align: top;
+            transition: all 0.3s ease;
+            margin-right: 50px;
+            margin-bottom: 50px;
+        }
+        main h2{
+            padding-bottom: 30px;
+        }
+        .arrow-link {
+            position: relative;
+            color: #274C77;
+            text-decoration: none;
+        }
+        .tile:hover .arrow-link {
+            color: white;
+        }
+        #add_publication {
+            position: fixed;
+            display: block;
+            background: #274C77;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            bottom: 20px;
+            left: 20px;
+            text-align: center;
+            border: 1px solid #274C77;
+        }
+        #add_publication:hover {
+            background: white;
+            color: #274C77;
+        }
+        p:has(.form-control) {
+            display: flex;
+            flex-direction: column;
+        } 
+    </style>
+
 </head>
 <body>
-    <h1>Add a New Project</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Save</button>
-        <ul id="id_choices" class="custom-checkbox" data-custom-attr="example">
-    <li>
-        <label for="id_choices_0">
-            <input type="checkbox" name="choices" value="option1" id="id_choices_0">
-            Option 1
-        </label>
-    </li>
-    <li>
-        <label for="id_choices_1">
-            <input type="checkbox" name="choices" value="option2" id="id_choices_1">
-            Option 2
-        </label>
-    </li>
-    <li>
-        <label for="id_choices_2">
-            <input type="checkbox" name="choices" value="option3" id="id_choices_2">
-            Option 3
-        </label>
-    </li>
-</ul>
-    </form>
-    <a href="{% url 'publication_list' %}">Back to Posts</a>
+    <header>
+        <div id="title"><h1><a href="/">żAIrt</a></h1></div>
+    </header>
+    <div class="container">
+        <nav>
+            <a href="/" class="btn">Strona Główna</a>
+            <a href="{% url 'FbNaukowcy:project_list' %}" class="btn">Projekty</a>
+        </nav>
+        <main>
+            <h1>Dodaj nowy projekt</h1>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </main>
+    </div>
 </body>
 </html>

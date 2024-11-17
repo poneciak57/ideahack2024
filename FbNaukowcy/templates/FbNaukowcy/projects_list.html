@@ -147,17 +147,37 @@
             <a href="{% url 'FbNaukowcy:publication_list' %}" class="btn">Prace Naukowe</a>
             <div class="bottom-left-buttons">
                 <a href="#" class="btn" id="scientist_button">Naukowiec</a>
-                <a href="#" class="btn">Przedsiębiorca</a>
+                <a href="/buisness" class="btn">Przedsiębiorca</a>
             </div>
         </nav>
         <main>
-            <h2>Projekty</h2>
+            <h2>Twoje Projekty</h2>
+            <ul>
+                {% for post in your_projects %}
+                    <li class="tile">
+                        <a href="{% url 'FbNaukowcy:project_details' post.pk %}">
+                            <div>
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.brief|truncatewords:20 }}</p>
+                                <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                            </div>
+                        </a>
+                    </li>
+                {% empty %}
+                    <li>No posts available.</li>
+                {% endfor %}
+            </ul>
+            <h2>Dostępne Projekty</h2>
             <ul>
                 {% for post in publications %}
                     <li class="tile">
-                        <h3>{{ post.title }}</h3>
-                        <p>{{ post.brief|truncatewords:20 }}</p>
-                        <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                        <a href="{% url 'FbNaukowcy:project_details' post.pk %}">
+                            <div>
+                                <h3>{{ post.title }}</h3>
+                                <p>{{ post.brief|truncatewords:20 }}</p>
+                                <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                            </div>
+                        </a>
                     </li>
                 {% empty %}
                     <li>No posts available.</li>

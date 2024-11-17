@@ -17,11 +17,22 @@ def publication_list(request):
 @login_required
 def project_list(request):
     logged_user = request.user
-    invitations = Invitation.objects.filter(receiver__user=logged_user)
+
+    logged_user_projects = [ ]
+    for profile in logged_user.profile_set.all():
+        for project in profile.projects.all():
+            logged_user_projects.append(project)
+
     projects = Project.objects.all()
+    other_projects = [ ]
+    for project in projects:
+        if not project in logged_user_projects:
+            other_projects.append(project)
+
+    invitations = Invitation.objects.filter(receiver__user=logged_user)
     users = Profile.objects.all()
     return render(request, 'FbNaukowcy/projects_list.html',
-                  {'publications': projects, 'users': users, 'invitations': invitations, 'logged_user': logged_user})
+                  {'publications': other_projects, 'users': users, 'invitations': invitations, 'logged_user': logged_user, 'your_projects': logged_user_projects})
 
 @login_required
 def add_publication(request):
@@ -39,6 +50,11 @@ def project_details(request, project_id):
     rounds = FinanceRound.objects.filter(project=project)
     return render(request, 'FbNaukowcy/project_details.html', {'project': project, 'rounds': rounds})
 
+def publication_details(request, publication_id):
+    paper = get_object_or_404(Paper, pk=publication_id)
+    return render(request, 'FbNaukowcy/publication_details.html', {'paper': paper})
+
+
 def add_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST,user=request.user)
@@ -46,7 +62,7 @@ def add_project(request):
             form.save()
             return redirect('projects_list')  # Przekierowanie na listę postów
     else:
-        form = PublicationForm()
+        form = ProjectForm()
     return render(request, 'FbNaukowcy/add_project.html', {'form': form})
 
 @login_required

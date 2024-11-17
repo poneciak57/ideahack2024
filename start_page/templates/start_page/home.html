@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -31,7 +32,7 @@
         }
         main {
             text-align: center;
-            margin-top: 40vh;
+            margin-top: 10vh;
             position: relative;
         }
         nav a {
@@ -76,7 +77,7 @@
         </nav>
     </header>
     <main>
-        <h1>Połącz ludzi z całego świata, aby tworzyć innowacyjne projekty</h1>
+        <img src="{% static 'images/xd.png' %}" alt="xd">
     </main>
 </body>
 </html>
