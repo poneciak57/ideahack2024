@@ -26,4 +26,6 @@ urlpatterns = [
     path('', include('auth_app.urls')),
 
     path('', include('start_page.urls')),
+
+    path('buisness/', include('BuissnessSearch.urls')),
 ]

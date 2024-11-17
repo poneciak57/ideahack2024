@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Detail</title>
+</head>
+<body>
+    <h1>{{ project.title }}</h1>
+    <p><strong>Finansowanie:</strong> {{ project.funding }}</p>
+    <p><strong>Brief:</strong> {{ project.brief }}</p>
+    <a href="{% url 'edit_project' project.id %}">Edytuj projekt</a>
+</body>
+</html>
