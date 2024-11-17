@@ -5,11 +5,13 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def publication_list(request):
-    publications = Paper.objects.all()
-    users = CustomUser.objects.all()
     logged_user = request.user
+    # publications = Paper.objects.all()
+    publications_of_logged_user = Paper.objects.filter(author__user=logged_user)
+    publications_of_other_users = Paper.objects.exclude(author__user=logged_user)
+    users = CustomUser.objects.all()
     return render(request, 'FbNaukowcy/publication_list.html',
-                  {'publications': publications, 'users': users, 'logged_user': logged_user})
+                  {'publications_of_logged_user': publications_of_logged_user, 'publications_of_other_users': publications_of_other_users, 'users': users, 'logged_user': logged_user})
 
 def project_list(request):
     projects = Project.objects.all()

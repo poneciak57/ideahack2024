@@ -109,7 +109,7 @@
             <!-- TODO provide publications from the database -->
             <h2>Papers list</h2>
             <ul>
-                {% for post in publications %}
+                {% for post in publications_of_other_users %}
                     <li class="tile">
                         <h3>{{ post.title }}</h3>
                         <p>{{ post.brief|truncatewords:20 }}</p>
@@ -121,7 +121,16 @@
             </ul>
             <h2>Twoje otwarte projekty naukowe</h2>
             <ul>
-                    <li class="tile">
+                    {% for post in publications_of_logged_user %}
+                        <li class="tile">
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.brief|truncatewords:20 }}</p>
+                            <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                        </li>
+                    {% empty %}
+                        <li>No posts available.</li>
+                    {% endfor %}
+                    <!-- <li class="tile">
                         <h3>Lorem, ipsum.</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
                         <small>Autorzy</small>
@@ -144,7 +153,7 @@
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
                         <small>Autorzy</small>
                         <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
+                    </li> -->
             </ul>
             <h2>Badania podobne do twoich</h2>
             <ul>
