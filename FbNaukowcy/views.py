@@ -41,7 +41,7 @@ def add_publication(request):
         form = PublicationForm(request.POST,user=request.user)
         if form.is_valid():
             form.save()
-            return redirect('publication_list')  # Przekierowanie na listę postów
+            return redirect('FbNaukowcy:publication_list')  # Przekierowanie na listę postów
     else:
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_publication.html', {'form': form})

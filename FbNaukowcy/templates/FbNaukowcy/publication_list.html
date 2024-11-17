@@ -177,10 +177,10 @@
         <nav>
             <a href="/" class="btn">Strona Główna</a>
             {% if is_scientist %}
-                <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">View projects</a>
+                <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">Projekty biznesowe</a>
                 <a id="add_publication" class="btn" href="{% url 'FbNaukowcy:add_publication' %}">Stwórz pracę naukową</a>
             {% else %}
-                <a href="{% url 'BuissnessSearch:project_list' %}" class="btn btn-primary">View projects</a>
+                <a href="{% url 'BuissnessSearch:project_list' %}" class="btn btn-primary">Projekty biznesowe</a>
             {% endif %}
             <div class="bottom-left-buttons">
                 <a href="#" class="btn" id="scientist_button">Naukowiec</a>
@@ -189,7 +189,7 @@
         </nav>
         <main>
             <!-- TODO provide publications from the database -->
-            <h2>Papers list</h2>
+            <h2>Publikacje dla Ciebie</h2>
             <ul>
                 {% for publication in publications_of_other_users %}
                 <li class="tile">
@@ -244,37 +244,6 @@
                         <small>Autorzy</small>
                         <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
                     </li> -->
-            </ul>
-            <h2>Badania podobne do twoich</h2>
-            <ul>
-                <li class="tile">
-                    <h3>Lorem, ipsum.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis
-                        voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                    <small>Autorzy</small>
-                    <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                </li>
-                <li class="tile">
-                    <h3>Lorem, ipsum.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis
-                        voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                    <small>Autorzy</small>
-                    <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                </li>
-                <li class="tile">
-                    <h3>Lorem, ipsum.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis
-                        voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                    <small>Autorzy</small>
-                    <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                </li>
-                <li class="tile">
-                    <h3>Lorem, ipsum.</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis
-                        voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                    <small>Autorzy</small>
-                    <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                </li>
             </ul>
         </main>
     </div>
