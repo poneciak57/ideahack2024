@@ -71,9 +71,21 @@
     <header>
         <div id="title"><h1><a href="/">żAIrt</a></h1></div>
         <nav>
-            <a href="FbNaukowcy">Publikacje naukowe</a>
+            {% if user.is_authenticated %}
+                {% if is_businessman %}
+                    <a href="{% url 'BuissnessSearch:project_list' %}">Dla Biznesmanów</a>
+                {% endif %}
+                {% if is_scientist %}
+                    <a href="{% url 'FbNaukowcy:publication_list' %}">Dlal Naukowców</a>
+                {% endif %}
+                <a href="{% url 'logout' %}" class="btn btn-login">Wyloguj się</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn btn-login">Zaloguj się</a>
+                <a href="{% url 'register' %}" class="btn btn-register">Zarejestruj się</a>
+            {% endif %}
+            <!-- <a href="{% url 'FbNaukowcy:publication_list' %}">Publikacje naukowe</a>
             <a href="login" class="btn btn-login">Zaloguj się</a>
-            <a href="#" class="btn btn-register">Zarejestruj się</a>
+            <a href="#" class="btn btn-register">Zarejestruj się</a> -->
         </nav>
     </header>
     <main>

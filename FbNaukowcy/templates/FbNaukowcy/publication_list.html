@@ -149,8 +149,12 @@
     <div class="container">
         <nav>
             <a href="/" class="btn">Strona Główna</a>
-            <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">View projects</a>
-            <a id="add_publication" class="btn" href="{% url 'FbNaukowcy:add_publication' %}">Stwórz pracę naukową</a>
+            {% if is_scientist %}
+                <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">View projects</a>
+                <a id="add_publication" class="btn" href="{% url 'FbNaukowcy:add_publication' %}">Stwórz pracę naukową</a>
+            {% else %}
+                <a href="{% url 'BuissnessSearch:project_list' %}" class="btn btn-primary">View projects</a>
+            {% endif %}
             <div class="bottom-left-buttons">
                 <a href="#" class="btn" id="scientist_button">Naukowiec</a>
                 <a href="/buisness" class="btn">Przedsiębiorca</a>

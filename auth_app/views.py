@@ -11,7 +11,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect('secured')  # Redirect to a secured page
+            return redirect('/')  # Redirect to a secured page
         else:
             return render(request, 'auth_app/login.html', {'error': 'Nieprawidłowy login lub hasło'})
     return render(request, 'auth_app/login.html')

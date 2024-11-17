@@ -100,7 +100,7 @@
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
-            bottom: 20px;
+            bottom: 80px;
             left: 20px;
             text-align: center;
             border: 1px solid #274C77;
@@ -149,6 +149,7 @@
         <nav>
             <a href="/" class="btn">Strona Główna</a>
             <a href="{% url 'FbNaukowcy:publication_list' %}" class="btn">Prace Naukowe</a>
+            <a id="add_publication" class="btn" href="{% url 'BuissnessSearch:add_project' %}">Stwórz projekt biznesowy</a>
             <div class="bottom-left-buttons">
                 <a href="/scientist_feed" class="btn">Naukowiec</a>
                 <a href="/buisness" id="bis_button" class="btn">Przedsiębiorca</a>

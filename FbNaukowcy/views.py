@@ -11,8 +11,9 @@ def publication_list(request):
     publications_of_logged_user = Paper.objects.filter(author__user=logged_user)
     publications_of_other_users = Paper.objects.exclude(author__user=logged_user)
     users = CustomUser.objects.all()
+    is_scientist = logged_user.profile_set.filter(type='scientist').exists()
     return render(request, 'FbNaukowcy/publication_list.html',
-                  {'publications_of_logged_user': publications_of_logged_user, 'publications_of_other_users': publications_of_other_users, 'users': users, 'logged_user': logged_user})
+                  {'publications_of_logged_user': publications_of_logged_user, 'publications_of_other_users': publications_of_other_users, 'users': users, 'logged_user': logged_user, 'is_scientist': is_scientist})
 
 @login_required
 def project_list(request):
