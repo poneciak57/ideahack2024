@@ -40,8 +40,10 @@
         }
 
         nav {
-            width: 15%;
+            width: 21vw;
             padding: 20px;
+            margin-right: 50px;
+            margin-top: 30px;
         }
 
         nav a {
@@ -58,15 +60,18 @@
 
         h2 {
             color: #274C77;
-            margin-bottom: 20px;
+            margin-bottom: 0px;
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 17px 24px;
             border: 1px solid #274C77;
             transition: all 0.3s ease;
             background: #274C77;
             color: white;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .btn:hover {
@@ -85,7 +90,7 @@
 
         .tile {
             display: inline-block;
-            width: 20%;
+            width: 300px;
             height: 200px;
             padding: 20px;
             border: 1px solid #274C77;
@@ -112,7 +117,6 @@
         }
 
         #add_publication {
-            position: fixed;
             display: block;
             background: #274C77;
             color: white;
@@ -120,9 +124,8 @@
             transition: all 0.3s ease;
             bottom: 80px;
             left: 20px;
-            text-align: center;
             border: 1px solid #274C77;
-            width: 260px;
+            width: 100%;
         }
 
         #add_publication:hover {
@@ -177,18 +180,18 @@
         <nav>
             <a href="/" class="btn">Strona Główna</a>
             {% if is_scientist %}
-                <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">Projekty biznesowe</a>
-                <a id="add_publication" class="btn" href="{% url 'FbNaukowcy:add_publication' %}">Stwórz pracę naukową</a>
+            <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">Zobacz projekty</a>
+            <a id="add_publication" class="btn" href="{% url 'FbNaukowcy:add_publication' %}">Stwórz pracę naukową</a>
+            <a href="{% url 'FbNaukowcy:project_list' %}" class="btn btn-primary">Projekty biznesowe</a>
+            <a id="add_publication" class="btn" href="{% url 'FbNaukowcy:add_publication' %}">Stwórz pracę naukową</a>
             {% else %}
-                <a href="{% url 'BuissnessSearch:project_list' %}" class="btn btn-primary">Projekty biznesowe</a>
+            <a href="{% url 'BuissnessSearch:project_list' %}" class="btn btn-primary">Zobacz projekty</a>
+            <a href="{% url 'BuissnessSearch:project_list' %}" class="btn btn-primary">Projekty biznesowe</a>
             {% endif %}
-            <div class="bottom-left-buttons">
-                <a href="#" class="btn" id="scientist_button">Naukowiec</a>
-                <a href="/buisness" class="btn">Przedsiębiorca</a>
-            </div>
         </nav>
         <main>
             <!-- TODO provide publications from the database -->
+            <h2>Prace naukowe</h2>
             <h2>Publikacje dla Ciebie</h2>
             <ul>
                 {% for publication in publications_of_other_users %}
