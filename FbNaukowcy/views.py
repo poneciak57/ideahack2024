@@ -37,6 +37,22 @@ def add_project(request):
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_project.html', {'form': form})
 
+@login_required
+def rounds(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    if request.method == 'POST':
+        form = FinanceRoundForm(request.POST)
+        if form.is_valid():
+            finance_round = form.save(commit=False)
+            finance_round.project = project
+            finance_round.save()
+            # TODO change to project details with project id in redirect
+            # TODO also add funding rounds to project details view
+            return redirect('project_list')
+    else:
+        form = FinanceRoundForm()
+    return render(request, 'FbNaukowcy/add_round.html', {'form': form, 'project': project})
+
 def add_u(request):
     Profile.objects.create(type='sciencist',open_for_contact=True)
     return HttpResponse('ok')

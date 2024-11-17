@@ -57,6 +57,14 @@ class Project(models.Model):
     def __str__(self):
         return f'{self.title}'
 
+class FinanceRound(models.Model):
+    title = models.CharField(max_length=100)
+    brief = models.TextField()
+    fundings_gathered = models.FloatField()
+    end_date = models.DateField()
+    start_date = models.DateField(auto_now_add=True)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+
 class Invitation(models.Model):
     INVITATION_STATUS_CHOICES = [
         ('pending', 'Pending'),
