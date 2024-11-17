@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect, HttpResponse
+from common.models import CustomUser, Paper, Profile, Project, FinanceRound
 from common.models import CustomUser, Invitation, Paper, Profile, Project
 from .forms import FinanceRoundForm, PublicationForm, ProjectForm
 from django.contrib.auth.decorators import login_required
@@ -33,12 +34,17 @@ def add_publication(request):
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_publication.html', {'form': form})
 
+def project_details(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    rounds = FinanceRound.objects.filter(project=project)
+    return render(request, 'FbNaukowcy/project_details.html', {'project': project, 'rounds': rounds})
+
 def add_project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST,user=request.user)
         if form.is_valid():
             form.save()
-            return redirect('publication_list')  # Przekierowanie na listę postów
+            return redirect('projects_list')  # Przekierowanie na listę postów
     else:
         form = PublicationForm()
     return render(request, 'FbNaukowcy/add_project.html', {'form': form})
@@ -52,9 +58,7 @@ def rounds(request, project_id):
             finance_round = form.save(commit=False)
             finance_round.project = project
             finance_round.save()
-            # TODO change to project details with project id in redirect
-            # TODO also add funding rounds to project details view
-            return redirect('project_list')
+            return redirect('project_details', project_id=project_id)
     else:
         form = FinanceRoundForm()
     return render(request, 'FbNaukowcy/add_round.html', {'form': form, 'project': project})
