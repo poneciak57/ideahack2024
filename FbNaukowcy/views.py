@@ -17,11 +17,22 @@ def publication_list(request):
 @login_required
 def project_list(request):
     logged_user = request.user
-    invitations = Invitation.objects.filter(receiver__user=logged_user)
+
+    logged_user_projects = [ ]
+    for profile in logged_user.profile_set.all():
+        for project in profile.projects.all():
+            logged_user_projects.append(project)
+
     projects = Project.objects.all()
+    other_projects = [ ]
+    for project in projects:
+        if not project in logged_user_projects:
+            other_projects.append(project)
+
+    invitations = Invitation.objects.filter(receiver__user=logged_user)
     users = Profile.objects.all()
     return render(request, 'FbNaukowcy/projects_list.html',
-                  {'publications': projects, 'users': users, 'invitations': invitations, 'logged_user': logged_user})
+                  {'publications': other_projects, 'users': users, 'invitations': invitations, 'logged_user': logged_user, 'your_projects': logged_user_projects})
 
 @login_required
 def add_publication(request):
