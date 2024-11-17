@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,6 +13,7 @@
             padding: 0;
             box-sizing: border-box;
         }
+
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: #F6F6F6;
@@ -19,38 +21,46 @@
             display: flex;
             flex-direction: column;
         }
+
         header {
             padding-top: 20px;
             margin-left: auto;
             margin-right: auto;
             width: 96%;
         }
+
         header a {
             text-decoration: none;
             color: #274C77;
         }
+
         .container {
             display: flex;
             flex: 1;
         }
+
         nav {
             width: 15%;
             padding: 20px;
         }
+
         nav a {
             display: block;
             margin-bottom: 10px;
             text-decoration: none;
             color: #007bff;
         }
+
         main {
             flex: 1;
             padding: 20px;
         }
+
         h2 {
             color: #274C77;
             margin-bottom: 20px;
         }
+
         .btn {
             padding: 12px 24px;
             border: 1px solid #274C77;
@@ -58,17 +68,21 @@
             background: #274C77;
             color: white;
         }
+
         .btn:hover {
             background: white;
             color: #274C77;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         li {
             margin-bottom: 10px;
         }
+
         .tile {
             display: inline-block;
             width: 20%;
@@ -82,17 +96,21 @@
             margin-right: 50px;
             margin-bottom: 50px;
         }
-        main h2{
+
+        main h2 {
             padding-bottom: 30px;
         }
+
         .arrow-link {
             position: relative;
             color: #274C77;
             text-decoration: none;
         }
+
         .tile:hover .arrow-link {
             color: white;
         }
+
         #add_publication {
             position: fixed;
             display: block;
@@ -105,10 +123,12 @@
             text-align: center;
             border: 1px solid #274C77;
         }
+
         #add_publication:hover {
             background: white;
             color: #274C77;
         }
+
         .bottom-left-buttons {
             position: fixed;
             bottom: 20px;
@@ -116,6 +136,7 @@
             display: flex;
             gap: 10px;
         }
+
         .bottom-left-buttons .btn {
             background: #274C77;
             color: white;
@@ -124,10 +145,12 @@
             border: 1px solid #274C77;
             transition: all 0.3s ease;
         }
+
         .bottom-left-buttons .btn:hover {
             background: white;
             color: #274C77;
         }
+
         #scientist_button {
             background: white;
             color: #274C77;
@@ -145,9 +168,12 @@
         }
     </style>
 </head>
+
 <body>
     <header>
-        <div id="title"><h1><a href="/">żAIrt</a></h1></div>
+        <div id="title">
+            <h1><a href="/">trAIcon</a></h1>
+        </div>
     </header>
     <div class="container">
         <nav>
@@ -162,48 +188,50 @@
             <h2>Twoje Projekty</h2>
             <ul>
                 {% for post in your_projects %}
-                    <li class="tile">
-                        <a href="{% url 'FbNaukowcy:project_details' post.pk %}">
-                            <div>
-                                <h3>{{ post.title }}</h3>
-                                <p>{{ post.brief|truncatewords:20 }}</p>
-                                <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
-                            </div>
-                        </a>
-                    </li>
+                <li class="tile">
+                    <a href="{% url 'FbNaukowcy:project_details' post.pk %}">
+                        <div>
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.brief|truncatewords:20 }}</p>
+                            <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                        </div>
+                    </a>
+                </li>
                 {% empty %}
-                    <li>No posts available.</li>
+                <li>No posts available.</li>
                 {% endfor %}
             </ul>
             <h2>Dostępne Projekty</h2>
             <ul>
                 {% for post in publications %}
-                    <li class="tile">
-                        <a href="{% url 'FbNaukowcy:project_details' post.pk %}">
-                            <div>
-                                <h3>{{ post.title }}</h3>
-                                <p>{{ post.brief|truncatewords:20 }}</p>
-                                <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
-                            </div>
-                        </a>
-                    </li>
+                <li class="tile">
+                    <a href="{% url 'FbNaukowcy:project_details' post.pk %}">
+                        <div>
+                            <h3>{{ post.title }}</h3>
+                            <p>{{ post.brief|truncatewords:20 }}</p>
+                            <small>Posted by {{ post.user.username }} on {{ post.created_at }}</small>
+                        </div>
+                    </a>
+                </li>
                 {% empty %}
-                    <li>No posts available.</li>
+                <li>No posts available.</li>
                 {% endfor %}
             </ul>
             <h2>Zaproszenia</h2>
             <ul>
                 {% for invitation in invitations %}
-                    <li class="tile">
-                        <h3>{{ invitation.project.title }}</h3>
-                        <p>{{ invitation.brief|truncatewords:20 }}</p>
-                        <small>Jesteś zaproszony przez {{ invitation.sender.user.username }} by dołączyć do projektu o nazwie {{ invitation.project.title }}.</small>
-                    </li>
+                <li class="tile">
+                    <h3>{{ invitation.project.title }}</h3>
+                    <p>{{ invitation.brief|truncatewords:20 }}</p>
+                    <small>Jesteś zaproszony przez {{ invitation.sender.user.username }} by dołączyć do projektu o
+                        nazwie {{ invitation.project.title }}.</small>
+                </li>
                 {% empty %}
-                    <li>Brak oczekujących zaproszeń.</li>
+                <li>Brak oczekujących zaproszeń.</li>
                 {% endfor %}
             </ul>
         </main>
     </div>
 </body>
+
 </html>
