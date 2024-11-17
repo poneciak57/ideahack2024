@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 
+app_name = 'FbNaukowcy'
 urlpatterns = [
     path('', views.publication_list, name='publication_list'),
     path('projects/',views.project_list, name='project_list'),
