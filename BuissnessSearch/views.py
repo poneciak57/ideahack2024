@@ -90,7 +90,7 @@ def rounds(request, id):
             return redirect(f'/buisness/project/{id}')
     else:
         form = FinanceRoundForm()
-    return render(request, 'FbNaukowcy/add_round.html', {'form': form, 'project': project})
+    return render(request, 'BuissnessSearch/add_round.html', {'form': form, 'project': project})
 
 @login_required
 def create_invitation(request, id):
@@ -106,4 +106,4 @@ def create_invitation(request, id):
             status = 'pending',
             message=request.POST['message'])
         invitation.save()
-    return render(request, 'FbNaukowcy/create_invitation.html', {})
+    return render(request, 'BuissnessSearch/create_invitation.html', {})

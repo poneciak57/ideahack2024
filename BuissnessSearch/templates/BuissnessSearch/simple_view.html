@@ -1,34 +1,39 @@
-<!-- simple_form.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Simple Input Box</title>
+    <title>Wpisz pomysł, zajmiemy się resztą</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
             padding: 20px;
-            background-color: #f4f4f9;
+            background-color: #e8f0fe;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
         }
         .form-container {
             max-width: 400px;
-            margin: 0 auto;
+            width: 100%;
             padding: 20px;
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
         h1 {
-            text-align: center;
-            color: #333;
+            color: #1a5276;
+            margin-bottom: 20px;
         }
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
             color: #555;
+            text-align: left;
         }
         input[type="text"], input[type="file"] {
             width: calc(100% - 22px);
@@ -40,7 +45,7 @@
         button {
             width: 100%;
             padding: 10px;
-            background-color: #28a745;
+            background-color: #1a5276;
             border: none;
             color: white;
             font-size: 16px;
@@ -48,7 +53,7 @@
             cursor: pointer;
         }
         button:hover {
-            background-color: #218838;
+            background-color: #154360;
         }
     </style>
 </head>
@@ -59,10 +64,8 @@
             {% csrf_token %}
             <label for="{{ form.text_input.id_for_label }}">{{ form.text_input.label }}</label>
             {{ form.text_input }}
-
             <label for="{{ form.file_input.id_for_label }}">{{ form.file_input.label }}</label>
             {{ form.file_input }}
-
             <button type="submit">Submit</button>
         </form>
     </div>
