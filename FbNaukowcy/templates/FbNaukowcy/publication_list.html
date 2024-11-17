@@ -34,7 +34,7 @@
             flex: 1;
         }
         nav {
-            width: 200px;
+            width: 15%;
             padding: 20px;
         }
         nav a {
@@ -93,7 +93,22 @@
         .tile:hover .arrow-link {
             color: white;
         }
-        
+        #add_publication {
+            position: fixed;
+            display: block;
+            background: #274C77;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            bottom: 20px;
+            left: 20px;
+            text-align: center;
+            border: 1px solid #274C77;
+        }
+        #add_publication:hover {
+            background: white;
+            color: #274C77;
+        }
     </style>
 </head>
 <body>
@@ -102,11 +117,12 @@
     </header>
     <div class="container">
         <nav>
-            <a href="{% url 'add_publication' %}" class="btn">Add New Post</a>
-            <a href="{% url 'project_list' %}" class="btn btn-primary">View projects</a>
+            <a href="/" class="btn">Strona Główna</a>
+            <a href="{% url 'project_list' %}" class="btn">Projekty</a>
+            <a id="add_publication" class="btn" href="{% url 'add_publication' %}">Stwórz pracę naukową</a>
         </nav>
         <main>
-            <h2>Posts Kurwa</h2>
+            <h2>Prace naukowe</h2>
             <ul>
                 {% for post in publications %}
                     <li class="tile">
@@ -117,60 +133,6 @@
                 {% empty %}
                     <li>No posts available.</li>
                 {% endfor %}
-            </ul>
-            <h2>Twoje otwarte projekty naukowe</h2>
-            <ul>
-                    <li class="tile">
-                        <h3>Lorem, ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                        <small>Autorzy</small>
-                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
-                    <li class="tile">
-                        <h3>Lorem, ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                        <small>Autorzy</small>
-                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
-                    <li class="tile">
-                        <h3>Lorem, ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                        <small>Autorzy</small>
-                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
-                    <li class="tile">
-                        <h3>Lorem, ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                        <small>Autorzy</small>
-                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
-            </ul>
-            <h2>Badania podobne do twoich</h2>
-            <ul>
-                    <li class="tile">
-                        <h3>Lorem, ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                        <small>Autorzy</small>
-                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
-                    <li class="tile">
-                        <h3>Lorem, ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                        <small>Autorzy</small>
-                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
-                    <li class="tile">
-                        <h3>Lorem, ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                        <small>Autorzy</small>
-                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
-                    <li class="tile">
-                        <h3>Lorem, ipsum.</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae facere suscipit reiciendis voluptatum ut saepe quibusdam impedit tempore architecto totam.</p>
-                        <small>Autorzy</small>
-                        <a href="link-to-post" class="arrow-link"><i class="fas fa-arrow-right"></i></a>
-                    </li>
             </ul>
         </main>
     </div>
