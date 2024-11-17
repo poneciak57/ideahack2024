@@ -1,20 +1,70 @@
 <!-- simple_form.html -->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Simple Input Box</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        input[type="text"], input[type="file"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
 </head>
 <body>
-    <h1>Enter some text</h1>
-    <form method="post" enctype="multipart/form-data">  <!-- Add enctype here -->
-        {% csrf_token %}
-        <label for="{{ form.text_input.id_for_label }}">{{ form.text_input.label }}</label>
-        {{ form.text_input }}
+    <div class="form-container">
+        <h1>Enter Some Text</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="{{ form.text_input.id_for_label }}">{{ form.text_input.label }}</label>
+            {{ form.text_input }}
 
-        <label for="{{ form.file_input.id_for_label }}">{{ form.file_input.label }}</label>
-        {{ form.file_input }}
+            <label for="{{ form.file_input.id_for_label }}">{{ form.file_input.label }}</label>
+            {{ form.file_input }}
 
-        <button type="submit">Submit</button>
-    </form>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 </body>
 </html>

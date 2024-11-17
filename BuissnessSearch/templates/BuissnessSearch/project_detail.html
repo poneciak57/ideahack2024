@@ -3,11 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <title>Project Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+        p {
+            font-size: 16px;
+        }
+        .label {
+            color: #7f8c8d;
+            font-weight: bold;
+        }
+        .button-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button-link:hover {
+            background-color: #2980b9;
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ project.title }}</h1>
-    <p><strong>Finansowanie:</strong> {{ project.funding }}</p>
-    <p><strong>Brief:</strong> {{ project.brief }}</p>
-    <a href="{% url 'edit_project' project.id %}">Edytuj projekt</a>
+    <div class="container">
+        <h1>{{ project.title }}</h1>
+        <p><span class="label">Finansowanie:</span> {{ project.required_money }}</p>
+        <p><span class="label">Brief:</span> {{ project.brief }}</p>
+        <a href="{% url 'edit_project' project.id %}" class="button-link">Edytuj projekt</a>
+        <a href="{% url 'project_list' %}" class="button-link">Wróć na główną</a>  <!-- Adjust 'main_page' URL pattern as needed -->
+    </div>
 </body>
 </html>

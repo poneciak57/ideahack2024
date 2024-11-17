@@ -1,10 +1,10 @@
 # views.py
 from django.shortcuts import render,get_object_or_404, redirect, reverse
-
+import random
 from .chat_utils import idea_to_vec, fill_gaps_from_info
 from .forms import SimpleForm, ProjectForm
 from common.models import Project, Profile
-def simple_view(request):
+def add_project(request):
     print("XSDSD")
     if request.method == 'POST':
         form = SimpleForm(request.POST, request.FILES)  # Pass request.FILES to handle file data
@@ -38,13 +38,11 @@ def simple_view(request):
                 type="Startup"
             user = request.user
             user = user.profile_set.first()
-            print("CHUJ")
-            new_project=Project(author = user, title=title,required_money=money,brief=txt,type=type)
+            new_project=Project(author = user, title=title,required_money=random.randint(5,100)*100000,brief=brief,type=type)
             new_project.save()
             id=new_project.pk
             return redirect('/buisness/project/'+str(id)+'/')
     else:
-        print("XD")
         form = SimpleForm()
 
     return render(request, 'BuissnessSearch/simple_view.html', {'form': form})
@@ -65,3 +63,9 @@ def edit_project(request, id):
 def project_detail(request, id):
     project = get_object_or_404(Project, id=id)
     return render(request, 'BuissnessSearch/project_detail.html', {'project': project})
+
+def project_list(request):
+    projects = Project.objects.all()
+    users = Profile.objects.all()
+    return render(request, 'BuissnessSearch/projects_list.html',
+                  {'publications': projects, 'users': users})
