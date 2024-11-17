@@ -102,11 +102,11 @@
     </header>
     <div class="container">
         <nav>
-            <a href="{% url 'add_publication' %}" class="btn">Add New Post</a>
+            <a href="{% url 'add_publication' %}" class="btn">Publish New Paper</a>
             <a href="{% url 'project_list' %}" class="btn btn-primary">View projects</a>
         </nav>
         <main>
-            <h2>Posts Kurwa</h2>
+            <h2>Papers list</h2>
             <ul>
                 {% for post in publications %}
                     <li class="tile">
