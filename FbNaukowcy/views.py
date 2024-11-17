@@ -46,7 +46,7 @@ def add_project(request):
             form.save()
             return redirect('projects_list')  # Przekierowanie na listę postów
     else:
-        form = PublicationForm()
+        form = ProjectForm()
     return render(request, 'FbNaukowcy/add_project.html', {'form': form})
 
 @login_required

@@ -36,14 +36,15 @@ class ProjectForm(forms.ModelForm):
 
     class Meta:
         model = Project
-        fields = ['title', 'brief','is_public','content','required_money','type','project_scope','profiles']
+        fields = ['title', 'brief','is_public','content','required_money','type','project_scope']
         widgets = {
-            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Title'}),
-            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Content'}),
-            'brief': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Content'}),
+            'title': forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Tytuł'}),
+            'content': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Szczegółowy opis'}),
+            'brief': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Krótki opis'}),
+            'project_scope': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Zakres projektu'}), 
             'is_public': forms.CheckboxInput(),
             'type': forms.Select(attrs={'class': 'form-control', 'placeholder': 'Type'}),
-            'profiles': forms.CheckboxSelectMultiple(),
+            # 'profiles': forms.CheckboxSelectMultiple(),
         }
 
     def __init__(self, *args, **kwargs):
