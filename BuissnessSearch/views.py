@@ -2,8 +2,9 @@
 from django.shortcuts import render,get_object_or_404, redirect, reverse
 import random
 from .chat_utils import idea_to_vec, fill_gaps_from_info
-from .forms import SimpleForm, ProjectForm
-from common.models import Project, Profile
+from .forms import SimpleForm, ProjectForm, FinanceRoundForm
+from common.models import Project, Profile, CustomUser, FinanceRound, Invitation, Paper
+from django.contrib.auth.decorators import login_required
 def add_project(request):
     print("XSDSD")
     if request.method == 'POST':
@@ -23,6 +24,11 @@ def add_project(request):
                 ans=file.read()### przerabianie docsa na txt
             idea_type = idea_to_vec(ans)
             auto_fill = fill_gaps_from_info(ans)
+            try:
+                close_paper = Paper.objects.get(id=int(idea_type))
+            except:
+                close_paper = Paper(id=0)
+            embedding = close_paper.embedding
             txt=""
             try:
                 title,money,brief,type = auto_fill.split(';')
@@ -54,7 +60,7 @@ def edit_project(request, id):
         form = ProjectForm(request.POST, instance=project)
         if form.is_valid():
             form.save()
-            return redirect('project_detail', id=project.id)
+            return redirect('BuissnessSearch:project_detail', id=project.id)
     else:
         form = ProjectForm(instance=project)
 
@@ -62,10 +68,42 @@ def edit_project(request, id):
 
 def project_detail(request, id):
     project = get_object_or_404(Project, id=id)
-    return render(request, 'BuissnessSearch/project_detail.html', {'project': project})
+    rounds = FinanceRound.objects.filter(project=project)
+    users = CustomUser.objects.all()
+    return render(request, 'BuissnessSearch/project_detail.html', {'project': project,'rounds':rounds,'users':users})
 
 def project_list(request):
     projects = Project.objects.all()
     users = Profile.objects.all()
     return render(request, 'BuissnessSearch/projects_list.html',
                   {'publications': projects, 'users': users})
+
+@login_required
+def rounds(request, id):
+    project = get_object_or_404(Project, pk=id)
+    if request.method == 'POST':
+        form = FinanceRoundForm(request.POST)
+        if form.is_valid():
+            finance_round = form.save(commit=False)
+            finance_round.project = project
+            finance_round.save()
+            return redirect(f'/buisness/project/{id}')
+    else:
+        form = FinanceRoundForm()
+    return render(request, 'FbNaukowcy/add_round.html', {'form': form, 'project': project})
+
+@login_required
+def create_invitation(request, id):
+    project = get_object_or_404(Project, pk=id)
+    username = request.user
+    user = get_object_or_404(CustomUser, username=username)
+    profile = user.profile_set.first()
+    if request.method == 'POST':
+        invitation = Invitation.objects.create(
+            project=project,
+            sender = profile,
+            receiver = CustomUser.objects.get(username=request.POST['receiver']).profile_set.first(),
+            status = 'pending',
+            message=request.POST['message'])
+        invitation.save()
+    return render(request, 'FbNaukowcy/create_invitation.html', {})

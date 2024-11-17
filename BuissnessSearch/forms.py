@@ -1,10 +1,10 @@
 # forms.py
 from django import forms
-from common.models import Project
+from common.models import Project, FinanceRound
 class SimpleForm(forms.Form):
     text_input = forms.CharField(
         label='Enter Text',
-        widget=forms.Textarea(attrs={'rows': 40, 'cols': 40})  # Adjust size as needed
+        widget=forms.Textarea(attrs={'rows': 20, 'cols': 40})  # Adjust size as needed
     )
     file_input = forms.FileField(
         label='Upload File',
@@ -14,3 +14,11 @@ class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ['title', 'required_money', 'brief']
+
+class FinanceRoundForm(forms.ModelForm):
+    class Meta:
+        model = FinanceRound
+        fields = ['title', 'brief', 'fundings_gathered', 'end_date']
+        widgets = {
+            'end_date': forms.DateInput(attrs={'type': 'date'}),
+        }
