@@ -109,6 +109,32 @@
             background: white;
             color: #274C77;
         }
+        .bottom-left-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .bottom-left-buttons .btn {
+            background: #274C77;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
+        }
+        .bottom-left-buttons .btn:hover {
+            background: white;
+            color: #274C77;
+        }
+        #scientist_button {
+            background: white;
+            color: #274C77;
+            padding: 10px;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -119,7 +145,10 @@
         <nav>
             <a href="/" class="btn">Strona Główna</a>
             <a href="{% url 'publication_list' %}" class="btn">Prace Naukowe</a>
-            <!-- <a id="add_publication" class="btn" href="{% url 'add_publication' %}">Dodaj </a> -->
+            <div class="bottom-left-buttons">
+                <a href="#" class="btn" id="scientist_button">Naukowiec</a>
+                <a href="#" class="btn">Przedsiębiorca</a>
+            </div>
         </nav>
         <main>
             <h2>Projekty</h2>

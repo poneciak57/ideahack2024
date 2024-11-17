@@ -100,14 +100,41 @@
             color: white;
             text-decoration: none;
             transition: all 0.3s ease;
-            bottom: 20px;
+            bottom: 80px;
             left: 20px;
             text-align: center;
             border: 1px solid #274C77;
+            width: 260px;
         }
         #add_publication:hover {
             background: white;
             color: #274C77;
+        }
+        .bottom-left-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        .bottom-left-buttons .btn {
+            background: #274C77;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
+        }
+        .bottom-left-buttons .btn:hover {
+            background: white;
+            color: #274C77;
+        }
+        #scientist_button {
+            background: white;
+            color: #274C77;
+            padding: 10px;
+            border: 1px solid #274C77;
+            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -117,8 +144,13 @@
     </header>
     <div class="container">
         <nav>
-            <a href="{% url 'add_publication' %}" class="btn">Publish New Paper</a>
-            <a href="{% url 'project_list' %}" class="btn btn-primary">View projects</a>
+            <a href="/" class="btn">Strona Główna</a>
+            <a href="projects" class="btn btn-primary">View projects</a>
+            <a id="add_publication" class="btn" href="{% url 'add_publication' %}">Stwórz pracę naukową</a>
+            <div class="bottom-left-buttons">
+                <a href="#" class="btn" id="scientist_button">Naukowiec</a>
+                <a href="#" class="btn">Przedsiębiorca</a>
+            </div>
         </nav>
         <main>
             <!-- TODO provide publications from the database -->
