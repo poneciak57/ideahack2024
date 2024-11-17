@@ -2,7 +2,7 @@ from openai import OpenAI
 import os
 
 client = OpenAI(
-    api_key=open('token.txt').readline(),  # This is the default and can be omitted
+    api_key=open('token.txt').readline().strip()
 )
 def idea_to_vec(POMYSL):
     chat_completion = client.chat.completions.create(
