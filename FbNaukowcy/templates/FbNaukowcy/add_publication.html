@@ -50,7 +50,14 @@
             border: 1px solid #274C77;
             box-sizing: border-box;
         }
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #274C77;
+            box-sizing: border-box;
+        }
         .form-group button {
+            margin-top: 20px;
             width: 100%;
             height: 50px;
             padding: 10px;
@@ -81,12 +88,12 @@
 <body>
     <div id="title"><h1><a href="/">żAIrt</a></h1></div>
     <div id="content">
-        <form method="post">
-            <h2>Add a New Post</h2>
+        <form method="post" class="form-group">
+            <h2>Post new Paper</h2>
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit" class="btn btn-primary">Save</button>
-            <a href="{% url 'publication_list' %}">Back to Posts</a>
+            <a href="{% url 'FbNaukowcy:publication_list' %}">Back to Posts</a>
         </form>
     </div>        
 </body>
